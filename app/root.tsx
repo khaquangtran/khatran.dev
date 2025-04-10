@@ -12,14 +12,14 @@ import "./app.css";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Not Hacker News — Không Phải Hacker New Đâu" },
+    { title: "Kha Quang Trần" },
     {
       name: "description",
       content: "Howdy, this is my tech blog and this's not Hacker News lol",
     },
     {
       property: "og:title",
-      content: "Not Hacker News — Không Phải Hacker New Đâu",
+      content: "Kha Quang Trần",
     },
     {
       property: "og:description",
@@ -50,7 +50,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400,700;1,400,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,opsz@0,18..144;1,18..144&display=swap",
   },
 ];
 
