@@ -1,14 +1,5 @@
-import type { Route } from "./+types/home";
-
 import Rasberry from "../images/raspberry.jpg";
 import BuildPC from "../images/build_pc.jpg";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Kha Quang Tran" },
-    { name: "description", content: "Howdy, this is my tech blog" },
-  ];
-}
 
 const NAV_ITEMS = [
   {
@@ -335,7 +326,7 @@ export default function Home() {
             </p>
             <ul className="flex items-center gap-2">
               <li>
-                <a href="github.com/khaquangtran" className="link">
+                <a href="https://github.com/khaquangtran" className="link">
                   [Github]
                 </a>
               </li>
