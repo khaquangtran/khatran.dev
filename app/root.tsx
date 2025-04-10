@@ -10,6 +10,37 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Not Hacker News — Không Phải Hacker New Đâu" },
+    {
+      name: "description",
+      content: "Howdy, this is my tech blog and this's not Hacker News lol",
+    },
+    {
+      property: "og:title",
+      content: "Not Hacker News — Không Phải Hacker New Đâu",
+    },
+    {
+      property: "og:description",
+      content: "Howdy, this is my tech blog and this's not Hacker News lol",
+    },
+    {
+      property: "og:image",
+      content:
+        "https://raw.githubusercontent.com/khaquangtran/not-hacker-news/refs/heads/main/app/images/avatar.jpg",
+    },
+    {
+      property: "og:url",
+      content: "https://not-hacker-news-three.vercel.app/",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+  ];
+}
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
