@@ -50,7 +50,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,opsz@0,18..144;1,18..144&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Merriweather:ital,opsz@0,18..144;1,18..144&display=swap",
   },
 ];
 

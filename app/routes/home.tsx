@@ -53,7 +53,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <figure>
-              <img src={BuildPC} alt="Customized my Homelab" />
+              <img
+                src={BuildPC}
+                alt="Customized my Homelab"
+                width="450px"
+                height="450px"
+              />
               <figcaption className="mt-2 px-2">
                 <div className="flex items-center justify-between text-sm">
                   <h1 className="font-bold text-center">
@@ -64,7 +69,12 @@ export default function Home() {
               </figcaption>
             </figure>
             <figure>
-              <img src={Raspberry} alt="Played with my Raspberry" />
+              <img
+                src={Raspberry}
+                alt="Played with my Raspberry"
+                width="500px"
+                height="500px"
+              />
               <figcaption className="mt-2 px-2">
                 <div className="flex items-center justify-between text-sm">
                   <h1 className="font-bold text-center">
@@ -254,7 +264,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
             <div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4">
                 <div>
