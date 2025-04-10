@@ -47,13 +47,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
             <figure>
-              <div className="w-full aspect-square relative overflow-hidden shadow bg-gray-200">
-                <img
-                  src={BuildPC}
-                  className="absolute h-full w-full object-cover"
-                  alt="Customized my Homelab"
-                />
-              </div>
+              <img src={BuildPC} alt="Customized my Homelab" />
               <figcaption className="mt-2 px-2">
                 <div className="flex items-center justify-between text-xs">
                   <h1 className="font-bold text-center">
@@ -64,13 +58,7 @@ export default function Home() {
               </figcaption>
             </figure>
             <figure>
-              <div className="w-full aspect-square relative overflow-hidden shadow bg-gray-200">
-                <img
-                  src={Rasberry}
-                  className="absolute h-full w-full object-cover"
-                  alt="Played with my Rasberry"
-                />
-              </div>
+              <img src={Rasberry} alt="Played with my Rasberry" />
               <figcaption className="mt-2 px-2">
                 <div className="flex items-center justify-between text-xs">
                   <h1 className="font-bold text-center">
