@@ -1,5 +1,8 @@
-import Raspberry from "../images/raspberry.webp";
-import BuildPC from "../images/build_pc.webp";
+import Avatar from "../images/jesus_christ.webp";
+import HomelabRaspberry from "../images/homelab_raspberry.webp";
+import HomelabRaspberryMobile from "../images/homelab_raspberry_mobile.webp";
+import HomelabPC from "../images/homelab_pc.webp";
+import HomelabPCMobile from "../images/homelab_pc_mobile.webp";
 
 const NAV_ITEMS = [
   {
@@ -24,11 +27,13 @@ export default function Home() {
   return (
     <>
       <header className="mx-auto max-w-2xl pt-4 py-4 flex flex-col items-center justify-center gap-2">
+        <div className="w-[80px] h-[80px] rounded-full relative overflow-hidden bg-gray-400">
+          <img src={Avatar} alt="in-the-name-of-jesus-christ" />
+        </div>
         <a href="/" className="text-center">
           <h1 className="text-xl font-black font-serif uppercase">
             Kha Quang Trần
           </h1>
-          {/* <h2 className="text-sm">Xin Chào</h2> */}
         </a>
         <nav className="flex items-center gap-4 text-sm font-medium">
           {NAV_ITEMS.map((item) => (
@@ -53,12 +58,16 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <figure>
-              <img
-                src={BuildPC}
-                alt="Customized my Homelab"
-                width="450px"
-                height="450px"
-              />
+              <picture>
+                <source media="(min-width: 450px)" srcSet={HomelabPC} />
+                <source media="(min-width: 350px)" srcSet={HomelabPCMobile} />
+                <img
+                  src={HomelabPC}
+                  alt="Customized my PC"
+                  width="1000px"
+                  height="1000px"
+                />
+              </picture>
               <figcaption className="mt-2 px-2">
                 <div className="flex items-center justify-between text-sm">
                   <h1 className="font-bold text-center">
@@ -69,12 +78,19 @@ export default function Home() {
               </figcaption>
             </figure>
             <figure>
-              <img
-                src={Raspberry}
-                alt="Played with my Raspberry"
-                width="500px"
-                height="500px"
-              />
+              <picture>
+                <source media="(min-width: 450px)" srcSet={HomelabRaspberry} />
+                <source
+                  media="(min-width: 350px)"
+                  srcSet={HomelabRaspberryMobile}
+                />
+                <img
+                  src={HomelabRaspberry}
+                  alt="Played with my Raspberry"
+                  width="1000px"
+                  height="1000px"
+                />
+              </picture>
               <figcaption className="mt-2 px-2">
                 <div className="flex items-center justify-between text-sm">
                   <h1 className="font-bold text-center">

@@ -28,7 +28,7 @@ export function meta({}: Route.MetaArgs) {
     {
       property: "og:image",
       content:
-        "https://raw.githubusercontent.com/khaquangtran/not-hacker-news/refs/heads/main/app/images/avatar.jpg",
+        "https://raw.githubusercontent.com/khaquangtran/not-hacker-news/refs/heads/main/app/images/jesus_christ.webp",
     },
     {
       property: "og:url",
@@ -50,7 +50,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Merriweather:ital,opsz@0,18..144;1,18..144&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Merriweather:ital@0;1&display=swap",
   },
 ];
 
