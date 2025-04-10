@@ -1,5 +1,5 @@
-import Rasberry from "../images/raspberry.jpg";
-import BuildPC from "../images/build_pc.jpg";
+import Rasberry from "../images/raspberry.webp";
+import BuildPC from "../images/build_pc.webp";
 
 const NAV_ITEMS = [
   {
@@ -51,6 +51,7 @@ export default function Home() {
                 <img
                   src={BuildPC}
                   className="absolute h-full w-full object-cover"
+                  alt="Customized my Homelab"
                 />
               </div>
               <figcaption className="mt-2 px-2">
@@ -67,6 +68,7 @@ export default function Home() {
                 <img
                   src={Rasberry}
                   className="absolute h-full w-full object-cover"
+                  alt="Played with my Rasberry"
                 />
               </div>
               <figcaption className="mt-2 px-2">
