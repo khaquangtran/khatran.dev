@@ -1,6 +1,4 @@
-import type React from "react";
 import type { Route } from "./+types/home";
-import { GitHubLogoIcon, FileTextIcon } from "@radix-ui/react-icons";
 
 import Rasberry from "../images/raspberry.jpg";
 import BuildPC from "../images/build_pc.jpg";
@@ -8,7 +6,7 @@ import BuildPC from "../images/build_pc.jpg";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Kha Quang Tran" },
-    { name: "description", content: "Welcome to React Router!" },
+    { name: "description", content: "Howdy, this is my tech blog" },
   ];
 }
 
@@ -278,8 +276,8 @@ export default function Home() {
                   architecture pattern that separates read and write operations
                   into distinct services.
                 </p>
-                <p className="text-xs text-right">
-                  [Spring Boot, Maven, Postgres, MongoDB]
+                <p className="text-xs text-right italic">
+                  Spring Boot, Maven, Postgres, MongoDB
                 </p>
               </div>
             </div>
@@ -319,9 +317,9 @@ export default function Home() {
                   Manning, and I'm fascinated how they could build a literally
                   simple product on their side.
                 </p>
-                <p className="text-xs text-right">
-                  [Github Actions, AWS, Docker, TypeScript, Express, Prisma,
-                  Postgres]
+                <p className="text-xs text-right italic">
+                  Github Actions, AWS, Docker, TypeScript, Express, Prisma,
+                  Postgres
                 </p>
               </div>
             </div>
@@ -350,132 +348,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-      {/* <div className="pb-10"> */}
-      {/*   <section id="legend" className="mx-auto max-w-3xl mt-2 sm:mt-10"> */}
-      {/*     <h1 className="text-xl font-bold uppercase px-4 pt-4">#randoms</h1> */}
-      {/*     <figure className="mt-2"> */}
-      {/*       <div className="grid grid-cols-2 gap-1"> */}
-      {/*         <div className="aspect-square relative shadow"> */}
-      {/*           <img */}
-      {/*             src={BuildPC} */}
-      {/*             className="absolute h-full w-full object-cover" */}
-      {/*           /> */}
-      {/*         </div> */}
-      {/*         <div className="bg-black aspect-square relative shadow"> */}
-      {/*           <img */}
-      {/*             src={Rasberry} */}
-      {/*             className="absolute h-full w-full object-cover" */}
-      {/*           /> */}
-      {/*         </div> */}
-      {/*       </div> */}
-      {/*       <figcaption className="mt-2 text-sm text-gray-800 text-center"> */}
-      {/*         Building my <span className="font-bold">homelab</span> for fun LOL */}
-      {/*       </figcaption> */}
-      {/*     </figure> */}
-      {/*   </section> */}
-      {/*   <section */}
-      {/*     id="about" */}
-      {/*     className="mx-auto max-w-3xl mt-4 border-t border-dashed border-t-gray-300" */}
-      {/*   > */}
-      {/*     <h1 className="text-xl font-bold uppercase px-4 pt-4">#about</h1> */}
-      {/*     <div className="mt-4 text-sm flex flex-col gap-4 px-4 sm:px-0"> */}
-      {/*       <span> */}
-      {/*         Howdy, my name is Kha, I'm a Software Engineer with 3 years */}
-      {/*         experience. */}
-      {/*       </span> */}
-      {/*       <span> */}
-      {/*         I have a strong commitment and the passion to the technology. */}
-      {/*       </span> */}
-      {/*       <span> */}
-      {/*         My strongest expertise is about backend. However, understanding */}
-      {/*         how the web works is a must for me. */}
-      {/*       </span> */}
-      {/*       <span> */}
-      {/*         I like to spend my time to read blogs and documents whenever I */}
-      {/*         learned something new. */}
-      {/*       </span> */}
-      {/*       <span> */}
-      {/*         Recently, I like to get my hands on DevOps stuff such as HomeLab */}
-      {/*         and Networks to expand my domain. */}
-      {/*       </span> */}
-      {/*       <span className="mt-4 text-gray-600"> */}
-      {/*         If you are interested in working with me, please reach me at:{" "} */}
-      {/*         <a */}
-      {/*           href="mailto:khatran.swe.persona@gmail.com" */}
-      {/*           className="font-bold hover:underline text-black" */}
-      {/*         > */}
-      {/*           khatran.swe.persona@gmail.com */}
-      {/*         </a> */}
-      {/*       </span> */}
-      {/*     </div> */}
-      {/*   </section> */}
-      {/*   <section */}
-      {/*     id="work" */}
-      {/*     className="mx-auto max-w-3xl mt-4 border-t border-dashed border-t-gray-300" */}
-      {/*   > */}
-      {/*     <h1 className="text-xl font-bold uppercase px-4 pt-4">#Work</h1> */}
-      {/*     <div className="mt-4 text-sm flex flex-col gap-4 px-4 sm:px-0"> */}
-      {/*       <div> */}
-      {/*         <div className="flex flex-row justify-between"> */}
-      {/*           <div> */}
-      {/*             <h2 className="text-lg font-satoshi font-bold">EATLAB.AI</h2> */}
-      {/*             <span className="text-sm text-gray-700"> */}
-      {/*               #Software Engineer II */}
-      {/*             </span> */}
-      {/*           </div> */}
-      {/*           <span>2024 ~ 2025</span> */}
-      {/*         </div> */}
-      {/*         <div className="mt-2"> */}
-      {/*           In charged of many AI projects for clients. Collaborated with AI */}
-      {/*           Teams to provide the best solution for the current system and */}
-      {/*           situation. */}
-      {/*         </div> */}
-      {/*       </div> */}
-      {/*       <div> */}
-      {/*         <div className="flex flex-row justify-between"> */}
-      {/*           <div> */}
-      {/*             <h2 className="text-lg font-satoshi font-bold">Peeba</h2> */}
-      {/*             <span className="text-sm text-gray-700"> */}
-      {/*               #Software Engineer I && II */}
-      {/*             </span> */}
-      {/*           </div> */}
-      {/*           <span>2022 ~ 2024</span> */}
-      {/*         </div> */}
-      {/*         <div className="mt-2"> */}
-      {/*           Tremendous pressure... but fun. Worked with the best of the best */}
-      {/*           with many talent people in the team, I learned so much from */}
-      {/*           Dung, Duc && Quan. Here is the place that I achieved a lot of */}
-      {/*           success in my life. */}
-      {/*         </div> */}
-      {/*       </div> */}
-      {/*       <div> */}
-      {/*         <div className="flex flex-row justify-between"> */}
-      {/*           <div> */}
-      {/*             <h2 className="text-lg font-satoshi font-bold">DXC</h2> */}
-      {/*             <span className="text-sm text-gray-700"> */}
-      {/*               #Software Engineer Intern */}
-      {/*             </span> */}
-      {/*           </div> */}
-      {/*           <span>2021</span> */}
-      {/*         </div> */}
-      {/*         <div className="mt-2"> */}
-      {/*           I learned whatever technology they could teach. But mostly COBOL */}
-      {/*           LOL. */}
-      {/*         </div> */}
-      {/*       </div> */}
-      {/*     </div> */}
-      {/*   </section> */}
-      {/*   <section */}
-      {/*     id="project" */}
-      {/*     className="mx-auto max-w-3xl mt-4 border-t border-dashed border-t-gray-300" */}
-      {/*   > */}
-      {/*     <h1 className="text-xl font-bold uppercase px-4 pt-4">#Projects</h1> */}
-      {/*     <div className="mt-2 text-sm"> */}
-      {/*       Please stay tuned, I'm currently working on a really cool project. */}
-      {/*       Can't wait to release it soon. */}
-      {/*     </div> */}
-      {/*   </section> */}
-      {/* </div> */}
     </>
   );
 }
