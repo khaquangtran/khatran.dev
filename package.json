@@ -1,5 +1,5 @@
 {
-  "name": "0verfl0w",
+  "name": "Not Hacker News",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,6 +11,8 @@
   "dependencies": {
     "@react-router/node": "^7.5.0",
     "@react-router/serve": "^7.5.0",
+    "@vercel/node": "^5.1.14",
+    "@vercel/react-router": "^1.1.0",
     "isbot": "^5.1.17",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -29,4 +31,3 @@
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
-
