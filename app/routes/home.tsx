@@ -47,7 +47,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
             <figure>
-              <div className="w-full aspect-square relative overflow-hidden rounded-lg shadow">
+              <div className="w-full aspect-square relative overflow-hidden shadow bg-gray-200">
                 <img
                   src={BuildPC}
                   className="absolute h-full w-full object-cover"
@@ -64,7 +64,7 @@ export default function Home() {
               </figcaption>
             </figure>
             <figure>
-              <div className="w-full aspect-square relative overflow-hidden rounded-lg shadow">
+              <div className="w-full aspect-square relative overflow-hidden shadow bg-gray-200">
                 <img
                   src={Rasberry}
                   className="absolute h-full w-full object-cover"
