@@ -15,15 +15,15 @@ export function meta({}: Route.MetaArgs) {
 const NAV_ITEMS = [
   {
     key: "about",
-    link: "#about",
+    link: "#about-me",
   },
   {
-    key: "work",
-    link: "#work",
+    key: "works",
+    link: "#works",
   },
   {
     key: "projects",
-    link: "#project",
+    link: "#projects",
   },
   {
     key: "blog",
@@ -41,11 +41,7 @@ export default function Home() {
         </a>
         <nav className="flex items-center gap-4 text-xs font-medium tracking-tight">
           {NAV_ITEMS.map((item) => (
-            <a
-              key={item.key}
-              className="capitalize hover:underline cursor-pointer"
-              href={item.link}
-            >
+            <a key={item.key} className="capitalize link" href={item.link}>
               <span>{item.key}</span>
             </a>
           ))}
@@ -141,7 +137,7 @@ export default function Home() {
                 I'm currently available at any time, please reach me at ◝(ᵔᗜᵔ)◜{" "}
                 <a
                   href="mailto:khatran.swe.persona@gmail.com"
-                  className="mt-2 font-bold hover:underline"
+                  className="mt-2 link font-bold"
                 >
                   khatran.swe.persona@gmail.com
                 </a>
@@ -248,10 +244,109 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="works" className="px-2 sm:px-0">
+        <section id="projects" className="px-2 sm:px-0">
           <div className="flex flex-row items-center gap-2">
             <h1 className="title">projects</h1>
             <h2 className="subtitle">— Dự Án</h2>
+          </div>
+          <div className="flex flex-col gap-y-4 mt-2">
+            <div>
+              <div className="flex justify-between">
+                <div>
+                  <h1 className="font-satoshi font-bold tracking-tighter">
+                    CQRS Bank API
+                  </h1>
+                  <h2 className="subtitle italic">
+                    CQRS Paradigm in Banking Service
+                  </h2>
+                </div>
+                <ul className="flex gap-2">
+                  <li>
+                    <a
+                      href="https://github.com/khaquangtran/event-driven-tech-bank"
+                      className="link"
+                      target="_blank"
+                    >
+                      [code]
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-4 mt-2">
+                <p className="text-xs">
+                  CQRS (Command Query Responsibility Segregation) is a system
+                  architecture pattern that separates read and write operations
+                  into distinct services.
+                </p>
+                <p className="text-xs text-right">
+                  [Spring Boot, Maven, Postgres, MongoDB]
+                </p>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <div>
+                  <h1 className="font-satoshi font-bold tracking-tighter">
+                    Simple Manning API
+                  </h1>
+                  <h2 className="subtitle italic">Minial Manning Backend</h2>
+                </div>
+                <ul className="flex gap-2">
+                  <li>
+                    <a
+                      href="https://github.com/khaquangtran/simple-manning-api"
+                      className="link"
+                      target="_blank"
+                    >
+                      [code]
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="http://ec2-3-27-248-71.ap-southeast-2.compute.amazonaws.com/books"
+                      className="link"
+                      target="_blank"
+                    >
+                      [server]
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-4 mt-2">
+                <p className="text-xs">
+                  Manning Publications is an American publisher specializing in
+                  content relating to computers. I bought a lot of books from
+                  Manning, and I'm fascinated how they could build a literally
+                  simple product on their side.
+                </p>
+                <p className="text-xs text-right">
+                  [Github Actions, AWS, Docker, TypeScript, Express, Prisma,
+                  Postgres]
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          id="footer"
+          className="border-t border-dashed border-t-gray-400"
+        >
+          <div className="mt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-2">
+            <p className="text-xs">
+              © 2025 Kha Quang Tran. All rights reserved
+            </p>
+            <ul className="flex items-center gap-2">
+              <li>
+                <a href="github.com/khaquangtran" className="link">
+                  [Github]
+                </a>
+              </li>
+              <li>
+                <a href="mailto:khatran.swe.persona@gmail.com" className="link">
+                  [Mail]
+                </a>
+              </li>
+            </ul>
           </div>
         </section>
       </div>
