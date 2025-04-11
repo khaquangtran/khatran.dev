@@ -63,6 +63,9 @@ importers:
       vite-tsconfig-paths:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.8.3)(vite@6.2.6(@types/node@20.17.30)(jiti@2.4.2)(lightningcss@1.29.2))
+      wrangler:
+        specifier: ^4.10.0
+        version: 4.10.0(@cloudflare/workers-types@4.20250410.0)
 
 packages:
 
