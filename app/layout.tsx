@@ -39,8 +39,8 @@ export default function RootLayout({
                     <h1 className="text-5xl font-black font-sans tracking-tighter">database codex</h1>
                 </Link>
                 <div>
-                    <p className="font-mono text-sm text-center">Technical writings bout' Backend Engineering.</p>
-                    <p className="font-mono text-sm text-center">by <Link href="https://www.linkedin.com/in/khaquangtran/"><span className="font-sans underline underline-offset-2">Kha Tran</span></Link></p>
+                    <p className="font-mono text-sm text-center">Technical writings bout&apos; Backend Engineering.</p>
+                    <p className="font-mono text-sm text-center">by <Link href="https://www.linkedin.com/in/khaquangtran"><span className="font-sans underline underline-offset-2">Kha Tran</span></Link></p>
                 </div>
             </div>
         </header>
