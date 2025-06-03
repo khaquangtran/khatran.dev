@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+
+const montserrat = Montserrat({
+    variable: "--font-montserrat",
+    subsets: ["latin"]
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +31,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
       >
-        {children}
+        <header>
+            <div className="mx-auto max-w-3xl py-20 flex items-center justify-center flex-col gap-4">
+                <Link href="/">
+                    <h1 className="text-5xl font-black font-sans tracking-tighter">database codex</h1>
+                </Link>
+                <div>
+                    <p className="font-mono text-sm text-center">Technical writings bout' Backend Engineering.</p>
+                    <p className="font-mono text-sm text-center">by <Link href="https://www.linkedin.com/in/khaquangtran/"><span className="font-sans underline underline-offset-2">Kha Tran</span></Link></p>
+                </div>
+            </div>
+        </header>
+        <main>
+            {children}
+        </main>
       </body>
     </html>
   );
