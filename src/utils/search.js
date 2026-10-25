@@ -1,4 +1,5 @@
 import { articles } from '../data/articles.js'
+import { getArticleMarkdown } from '../data/articleContent.js'
 import { cheatsheets } from '../data/cheatsheets.js'
 
 const stopWords = new Set([
@@ -73,7 +74,7 @@ const searchIndex = [
     title: article.title,
     category: article.category,
     description: article.desc,
-    content: [...(article.body ?? []), article.searchText ?? ''].join(' '),
+    content: `${getArticleMarkdown(article.content)} ${article.searchText ?? ''}`,
     meta: `${article.date} · ${article.read}`,
     preview: article.desc,
   })),

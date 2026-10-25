@@ -12,7 +12,7 @@ export const articles = [
     searchText:
       'inventory reservation hold claim release Redis MySQL transaction ACID row per sellable unit bounded pool of 1,000 units SELECT FOR UPDATE SKIP LOCKED InnoDB indexes composite primary key REPEATABLE READ READ COMMITTED gap locks supremum pseudo-record deadlocks lock order UNION ALL batch line items database round trips ProxySQL connection pool thread queuing connection hold time checkout completion conn_tag latency throughput CPU dual write shadow mode gradual cutover kill switch rollback',
     art: 'database',
-    body: [],
+    content: 'shopify-reservations',
   },
   {
     id: 'row-locking',
@@ -25,11 +25,7 @@ export const articles = [
     title: 'PostgreSQL row locking, explained',
     desc: 'A practical guide to how PostgreSQL implements row locking, with examples and comparisons to MySQL.',
     art: 'stack',
-    body: [
-      'Row locks coordinate concurrent changes to the same records. They let unrelated work continue while protecting the rows a transaction needs to change.',
-      'The practical cost is usually waiting. Long transactions keep locks around, and a query that touches rows in an unexpected order can create contention or a deadlock.',
-      'Keep transactions short, inspect lock waits, and take locks in a consistent order. The goal is not to avoid locking; it is to make the critical section small and predictable.',
-    ],
+    content: 'row-locking',
   },
   {
     id: 'innodb-indexes',
@@ -42,11 +38,7 @@ export const articles = [
     title: 'Deep dive into InnoDB indexes',
     desc: 'How InnoDB stores index data, the difference between clustered and secondary indexes, and how it affects query performance.',
     art: 'blocks',
-    body: [
-      'InnoDB’s primary key is more than a lookup path: it defines how rows are organized in the clustered index. Secondary indexes store their own key and a reference back to that primary key.',
-      'This organization can make primary-key lookups efficient, while wide primary keys increase the size of every secondary index. Index design therefore affects both read paths and storage costs.',
-      'Use query plans and real workload measurements to decide which indexes earn their cost. An index that is never used still takes space and adds work to writes.',
-    ],
+    content: 'innodb-indexes',
   },
   {
     id: 'ml-platform',
@@ -59,11 +51,7 @@ export const articles = [
     title: 'Building a local ML platform with Airflow, MLflow and Kubernetes',
     desc: 'A practical path to a reproducible machine learning platform, from training pipelines to dependable model serving.',
     art: 'network',
-    body: [
-      'A useful ML platform makes experiments repeatable and gives teams a clear path from training to serving. Starting locally can keep the first feedback loop quick and inexpensive.',
-      'Airflow can coordinate pipeline steps, MLflow can record experiments and artifacts, and Kubernetes can provide a consistent target for workloads. The important work is defining how data, code, and configuration move between those pieces.',
-      'Before adding more infrastructure, make one complete path observable: run a pipeline, track its model, serve it, and understand how to roll it back.',
-    ],
+    content: 'ml-platform',
   },
   {
     id: 'distributed-systems',
@@ -76,11 +64,7 @@ export const articles = [
     title: 'Why distributed systems are hard (and worth it)',
     desc: 'Lessons on consistency, fault tolerance, and the human side of distributed systems.',
     art: 'orbit',
-    body: [
-      'Distributed systems make time and failure visible. A request can be delayed, duplicated, or lost while every individual component looks healthy.',
-      'The most effective designs make uncertainty explicit. Define ownership, set deadlines, make retries safe, and give operators a clear view of the system’s actual state.',
-      'Distribution has a cost. Pay it only when the boundaries, scale, or failure isolation solve a real problem for the people using the system.',
-    ],
+    content: 'distributed-systems',
   },
 ]
 

@@ -2453,6 +2453,20 @@ button {
   color: var(--code-ink);
   overflow: hidden;
 }
+.article-image {
+  margin: 26px 0 30px;
+}
+.article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.article-image figcaption {
+  margin-top: 9px;
+  color: var(--muted);
+  font: 9px/1.6 var(--mono);
+}
 .article-code figcaption {
   display: flex;
   justify-content: space-between;
@@ -2463,7 +2477,21 @@ button {
   font: 8px var(--mono);
   letter-spacing: 0.08em;
 }
-.article-code figcaption span:first-child {
+.article-code-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  gap: 12px;
+  white-space: nowrap;
+}
+.article-code-tools .copy-command {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.article-code figcaption > span:first-child {
   color: var(--code-accent);
 }
 .article-code pre {
@@ -4358,6 +4386,12 @@ body {
   content: counter(section, decimal-leading-zero);
   color: var(--accent);
   opacity: 0.8;
+}
+.article-page-v2 .article-toc > a[aria-current='location'] {
+  color: var(--accent);
+}
+.article-page-v2 .article-toc > a[aria-current='location']::before {
+  opacity: 1;
 }
 .article-page-v2 .article-topic-rail {
   border-left: 1px solid var(--line);

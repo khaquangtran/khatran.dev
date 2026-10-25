@@ -21,9 +21,10 @@ pnpm format:check
 
 - `src/app/` — application shell, theme state, and routes
 - `src/components/` — reusable navigation, cards, illustrations, and UI
-- `src/data/` — article metadata and cheatsheet content
-- `src/pages/` — route-level pages and the long-form Shopify article
+- `src/data/` — article metadata, Markdown loading, and cheatsheet content
+- `src/content/articles/` — long-form article bodies in Markdown
+- `src/pages/` — route-level pages; all essays share one article renderer
 - `src/styles/global.css` — global styles, tokens, and responsive layouts
 - `public/` — static assets copied into the production build
 
-Article metadata lives in `src/data/articles.js`. The Shopify walkthrough and its illustrative diagrams live in `src/pages/ShopifyArticle.jsx`.
+Article metadata lives in `src/data/articles.js`; each `content` value maps to a Markdown file in `src/content/articles/`. Shared renderers in `src/components/ArticleMarkdown.jsx` and `src/components/ArticleBlocks.jsx` handle headings, prose, code, images, callouts, and reusable diagrams. Add article visuals with a Markdown image (`![alt text](/images/example.png "Caption")`) or a registered component directive such as `:::SkipLockedDiagram`.

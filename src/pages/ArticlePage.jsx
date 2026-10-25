@@ -3,7 +3,9 @@ import { ArrowRight } from 'lucide-react'
 import { articles } from '../data/articles.js'
 import { Art } from '../components/Art.jsx'
 import { PageIntro } from '../components/PageIntro.jsx'
-import { ShopifyArticle } from './ShopifyArticle.jsx'
+import { ArticleMarkdown, getMarkdownHeadings } from '../components/ArticleMarkdown.jsx'
+import { getArticleMarkdown } from '../data/articleContent.js'
+import { ArticleToc } from '../components/ArticleToc.jsx'
 
 export function ArticlePage() {
   const { id } = useParams()
@@ -26,6 +28,8 @@ export function ArticlePage() {
     )
 
   const isShopify = article.id === 'shopify-reservations'
+  const markdown = getArticleMarkdown(article.content)
+  const headings = getMarkdownHeadings(markdown)
   const articleNumber = String(articleIndex + 1).padStart(2, '0')
   const nextArticle = articles[(articleIndex + 1) % articles.length]
 
@@ -92,19 +96,8 @@ export function ArticlePage() {
 
         <div className={`article-reading ${isShopify ? 'shopify-reading' : ''}`}>
           <aside className="article-side-rail">
-            {isShopify ? (
-              <nav className="article-toc" aria-label="In this article">
-                <span className="eyebrow mono">ON THIS PAGE</span>
-                <a href="#problem">The split state problem</a>
-                <a href="#lifecycle">Reservation lifecycle</a>
-                <a href="#unit-rows">One row per unit</a>
-                <a href="#bounded-pool">Bounded pool</a>
-                <a href="#index-locks">Indexes + isolation</a>
-                <a href="#deadlocks-batching">Lock order + batching</a>
-                <a href="#real-bottleneck">Connection bottleneck</a>
-                <a href="#safe-rollout">Safe cutover</a>
-                <a href="#takeaways">Takeaways</a>
-              </nav>
+            {headings.length ? (
+              <ArticleToc headings={headings} />
             ) : (
               <div className="article-topic-rail">
                 <span className="eyebrow mono">SUBJECT</span>
@@ -118,21 +111,7 @@ export function ArticlePage() {
           </aside>
 
           <article className="prose-section">
-            {isShopify ? (
-              <ShopifyArticle />
-            ) : (
-              <>
-                {article.body.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-                <h2>Make the trade-off visible</h2>
-                <p>
-                  Good engineering is the habit of making important trade-offs legible. Once we can
-                  see the shape of the problem, we can build systems that stay understandable as
-                  they grow.
-                </p>
-              </>
-            )}
+            <ArticleMarkdown markdown={markdown} />
           </article>
         </div>
 
