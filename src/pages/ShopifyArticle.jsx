@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import { CopyCommand } from '../components/CopyCommand.jsx'
 
 export function ShopifyMigrationDiagram() {
   return (
@@ -138,7 +139,10 @@ export function CodeBlock({ label, language, code }) {
     <figure className="article-code">
       <figcaption>
         <span>{label}</span>
-        <span>{language}</span>
+        <div className="article-code-tools">
+          <span>{language}</span>
+          <CopyCommand code={code} label="code" />
+        </div>
       </figcaption>
       <pre>
         <code>{code}</code>

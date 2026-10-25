@@ -109,13 +109,8 @@ export function Header({ dark, setDark }) {
   return (
     <header className="topbar">
       <Link className="brand" to="/">
-        <span className="brand-mark">
-          {Array.from({ length: 9 }, (_, i) => (
-            <i key={i} />
-          ))}
-        </span>
         <span>
-          KHA<span className="brand-dot">.</span>TRN
+          KHA<span className="brand-dot">.</span>TRAN
         </span>
       </Link>
       <nav className={menu ? 'nav open' : 'nav'}>
