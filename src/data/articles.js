@@ -9,6 +9,8 @@ export const articles = [
     read: '9 min read',
     title: 'How Shopify moved inventory reservations from Redis to MySQL',
     desc: 'A visual walkthrough of Shopify’s reservation redesign: one row per unit, SKIP LOCKED, a careful shadow-mode cutover, and the surprising connection bottleneck they found.',
+    searchText:
+      'inventory reservation hold claim release Redis MySQL transaction ACID row per sellable unit bounded pool of 1,000 units SELECT FOR UPDATE SKIP LOCKED InnoDB indexes composite primary key REPEATABLE READ READ COMMITTED gap locks supremum pseudo-record deadlocks lock order UNION ALL batch line items database round trips ProxySQL connection pool thread queuing connection hold time checkout completion conn_tag latency throughput CPU dual write shadow mode gradual cutover kill switch rollback',
     art: 'database',
     body: [],
   },

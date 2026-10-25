@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { PageIntro } from '../components/PageIntro.jsx'
 import { CopyCommand } from '../components/CopyCommand.jsx'
 import { cheatsheets } from '../data/cheatsheets.js'
+import { commandAnchor } from '../utils/search.js'
 
 const categories = Object.keys(cheatsheets)
 const commands = categories.flatMap((category) =>
@@ -10,9 +12,22 @@ const commands = categories.flatMap((category) =>
 
 export function CheatsheetsPage() {
   const [category, setCategory] = useState('All')
+  const location = useLocation()
   const visible =
     category === 'All' ? commands : commands.filter((item) => item.category === category)
   const filters = ['All', ...categories]
+
+  useEffect(() => {
+    const requestedCategory = new URLSearchParams(location.search).get('category')
+    setCategory(categories.includes(requestedCategory) ? requestedCategory : 'All')
+
+    if (location.hash) {
+      const targetId = decodeURIComponent(location.hash.slice(1))
+      requestAnimationFrame(() =>
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
+      )
+    }
+  }, [location.pathname, location.search, location.hash])
 
   return (
     <main className="content-page cheatsheet-page">
@@ -60,7 +75,11 @@ export function CheatsheetsPage() {
 
         <div className="cheat-list">
           {visible.map((item, index) => (
-            <article className="cheat-entry" key={`${item.category}-${item.title}`}>
+            <article
+              className="cheat-entry"
+              id={commandAnchor(item.category, item.title)}
+              key={`${item.category}-${item.title}`}
+            >
               <div className="cheat-entry-info">
                 <div className="cheat-entry-meta mono">
                   <span>{String(index + 1).padStart(2, '0')}</span>
