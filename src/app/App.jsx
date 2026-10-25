@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Header } from '../components/Header.jsx'
 import { Footer } from '../components/Footer.jsx'
@@ -12,7 +12,7 @@ import '../styles/global.css'
 
 export function App() {
   const [dark, setDark] = useState(localStorage.getItem('kha-theme') === 'dark')
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light'
     localStorage.setItem('kha-theme', dark ? 'dark' : 'light')
   }, [dark])

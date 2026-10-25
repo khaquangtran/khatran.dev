@@ -3,6 +3,42 @@ import * as THREE from 'three'
 import { AsciiEffect } from 'three/addons/effects/AsciiEffect.js'
 
 const shardNames = ['Shard 01', 'Shard 02', 'Shard 03', 'Shard 04', 'Shard 05']
+const shardPalettes = {
+  light: {
+    node: '#3f696c',
+    selected: '#ad442d',
+    link: '#78908d',
+    activeLink: '#ad442d',
+    emissive: '#25494a',
+    selectedEmissive: '#713a2c',
+    halo: '#678581',
+    gossip: '#6f9791',
+    ping: '#ad442d',
+    ambient: '#fff7e8',
+    key: '#e8a981',
+    clear: '#f3f0e7',
+  },
+  dark: {
+    node: '#c2d5ca',
+    selected: '#f29a77',
+    link: '#789795',
+    activeLink: '#ef9875',
+    emissive: '#38595a',
+    selectedEmissive: '#754137',
+    halo: '#87a8a2',
+    gossip: '#b6d4ca',
+    ping: '#ffd38a',
+    ambient: '#dcebe0',
+    key: '#ffffff',
+    clear: '#101b1e',
+  },
+}
+
+function getShardPalette() {
+  return document.documentElement.dataset.theme === 'dark'
+    ? shardPalettes.dark
+    : shardPalettes.light
+}
 
 export function AsciiAnimation() {
   const stageRef = useRef(null)
@@ -20,8 +56,10 @@ export function AsciiAnimation() {
     let lastFrameAt = 0
     let visible = true
     let disposed = false
+    let themeObserver
     let operationId = 0
     let operation = null
+    let palette = getShardPalette()
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
     let reducedMotion = motionPreference.matches
     const activeShardRef = { current: null }
@@ -36,7 +74,7 @@ export function AsciiAnimation() {
     ]
 
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#000000')
+    scene.background = null
 
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100)
     camera.position.set(0, 0, 3.5)
@@ -47,8 +85,8 @@ export function AsciiAnimation() {
     const connectionMeshes = []
     const shardMeshes = []
     const haloMeshes = []
-    const baseNodeColor = new THREE.Color('#bdcbd6')
-    const selectedNodeColor = new THREE.Color('#f0a184')
+    const baseNodeColor = new THREE.Color(palette.node)
+    const selectedNodeColor = new THREE.Color(palette.selected)
 
     // A complete mesh: each shard has a direct route to every other shard.
     for (let from = 0; from < shardPositions.length; from += 1) {
@@ -60,7 +98,7 @@ export function AsciiAnimation() {
         midpoint.y += (to - from) % 2 === 0 ? 0.06 : -0.06
         const curve = new THREE.QuadraticBezierCurve3(start, midpoint, end)
         const material = new THREE.MeshBasicMaterial({
-          color: '#8fa3b2',
+          color: palette.link,
           transparent: true,
           opacity: 0.42,
         })
@@ -79,7 +117,7 @@ export function AsciiAnimation() {
     for (let index = 0; index < shardPositions.length; index += 1) {
       const shardMaterial = new THREE.MeshStandardMaterial({
         color: baseNodeColor,
-        emissive: '#243847',
+        emissive: palette.emissive,
         roughness: 0.36,
         metalness: 0.12,
       })
@@ -89,7 +127,7 @@ export function AsciiAnimation() {
       shardMeshes.push(shard)
 
       const haloMaterial = new THREE.MeshBasicMaterial({
-        color: '#718494',
+        color: palette.halo,
         transparent: true,
         opacity: 0.7,
       })
@@ -102,8 +140,8 @@ export function AsciiAnimation() {
     }
 
     const packetGeometry = new THREE.SphereGeometry(0.045, 10, 8)
-    const gossipMaterial = new THREE.MeshBasicMaterial({ color: '#c8d8e4' })
-    const pingMaterial = new THREE.MeshBasicMaterial({ color: '#fff0d7' })
+    const gossipMaterial = new THREE.MeshBasicMaterial({ color: palette.gossip })
+    const pingMaterial = new THREE.MeshBasicMaterial({ color: palette.ping })
     const ringRoute = [0, 1, 2, 3, 4, 0]
     const gossipPackets = ringRoute.slice(0, -1).map(() => {
       const packet = new THREE.Mesh(packetGeometry, gossipMaterial)
@@ -139,13 +177,13 @@ export function AsciiAnimation() {
       shardMeshes.forEach((shard, index) => {
         const selected = index === source
         shard.material.color.copy(selected ? selectedNodeColor : baseNodeColor)
-        shard.material.emissive.set(selected ? '#6b3929' : '#243847')
+        shard.material.emissive.set(selected ? palette.selectedEmissive : palette.emissive)
         haloMeshes[index].material.color.copy(selected ? selectedNodeColor : baseNodeColor)
       })
       connectionMeshes.forEach(({ mesh, from, to }) => {
         const highlighted = from === source || to === source
         mesh.material.opacity = highlighted ? 0.78 : 0.42
-        mesh.material.color.set(highlighted ? '#dfa18a' : '#8fa3b2')
+        mesh.material.color.set(highlighted ? palette.activeLink : palette.link)
       })
       const startedAt = performance.now()
       pulseUntil[source] = startedAt + 500
@@ -212,8 +250,9 @@ export function AsciiAnimation() {
       }
     }
 
-    scene.add(new THREE.AmbientLight('#dbe5eb', 1.15))
-    const keyLight = new THREE.PointLight('#ffffff', 12)
+    const ambientLight = new THREE.AmbientLight(palette.ambient, 1.15)
+    scene.add(ambientLight)
+    const keyLight = new THREE.PointLight(palette.key, 12)
     keyLight.position.set(-2.5, 3.2, 4.5)
     scene.add(keyLight)
 
@@ -224,7 +263,7 @@ export function AsciiAnimation() {
         powerPreference: 'low-power',
       })
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5))
-      renderer.setClearColor('#000000', 1)
+      renderer.setClearColor(palette.clear, 0)
       renderer.domElement.style.color = 'var(--muted)'
 
       effect = new AsciiEffect(renderer, ' .,:;+=*#%@', {
@@ -248,6 +287,35 @@ export function AsciiAnimation() {
       if (disposed || !effect) return
       effect.render(scene, camera)
     }
+
+    const applyTheme = () => {
+      palette = getShardPalette()
+      baseNodeColor.set(palette.node)
+      selectedNodeColor.set(palette.selected)
+      gossipMaterial.color.set(palette.gossip)
+      pingMaterial.color.set(palette.ping)
+      ambientLight.color.set(palette.ambient)
+      keyLight.color.set(palette.key)
+      renderer.setClearColor(palette.clear, 0)
+
+      shardMeshes.forEach((shard, index) => {
+        const selected = activeShardRef.current === index
+        shard.material.color.copy(selected ? selectedNodeColor : baseNodeColor)
+        shard.material.emissive.set(selected ? palette.selectedEmissive : palette.emissive)
+        haloMeshes[index].material.color.set(selected ? palette.selected : palette.halo)
+      })
+      connectionMeshes.forEach(({ mesh, from, to }) => {
+        const highlighted = activeShardRef.current === from || activeShardRef.current === to
+        mesh.material.color.set(highlighted ? palette.activeLink : palette.link)
+      })
+      renderFrame()
+    }
+
+    themeObserver = new MutationObserver(applyTheme)
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    })
 
     const resize = () => {
       if (!effect) return
@@ -310,7 +378,7 @@ export function AsciiAnimation() {
         connectionMeshes.forEach(({ mesh, from, to }) => {
           const highlighted = activeShardRef.current === from || activeShardRef.current === to
           mesh.material.opacity = highlighted ? 0.78 : 0.42
-          mesh.material.color.set(highlighted ? '#dfa18a' : '#8fa3b2')
+          mesh.material.color.set(highlighted ? palette.activeLink : palette.link)
         })
         renderFrame()
       }
@@ -357,6 +425,7 @@ export function AsciiAnimation() {
       if (frameId) window.cancelAnimationFrame(frameId)
       resizeObserver.disconnect()
       visibilityObserver.disconnect()
+      themeObserver.disconnect()
       motionPreference.removeEventListener('change', onMotionPreferenceChange)
       stage.removeEventListener('click', pickShard)
       stage.removeEventListener('pointermove', onPointerMove)
