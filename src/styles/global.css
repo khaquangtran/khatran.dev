@@ -3973,7 +3973,12 @@ body {
     font-size: 8px;
   }
   .hero-network .hero-map-panel .ascii-showcase {
+    width: 100%;
     padding: 12px 10px 10px;
+  }
+  .hero-network .hero-map-panel {
+    align-self: stretch;
+    width: 100%;
   }
   .hero-network .hero-map-panel .ascii-render-stage {
     height: 175px;
