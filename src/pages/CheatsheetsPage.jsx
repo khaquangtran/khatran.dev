@@ -4,6 +4,7 @@ import { PageIntro } from '../components/PageIntro.jsx'
 import { CopyCommand } from '../components/CopyCommand.jsx'
 import { cheatsheets } from '../data/cheatsheets.js'
 import { commandAnchor } from '../utils/search.js'
+import { Seo } from '../components/Seo.jsx'
 
 const categories = Object.keys(cheatsheets)
 const commands = categories.flatMap((category) =>
@@ -31,6 +32,30 @@ export function CheatsheetsPage() {
 
   return (
     <main className="content-page cheatsheet-page">
+      <Seo
+        title="Developer cheatsheets and command references"
+        description="Quick, searchable command references for AWS, Docker, Kubernetes, Git, and everyday engineering workflows."
+        keywords={[
+          'developer cheatsheets',
+          'AWS CLI commands',
+          'Docker commands',
+          'Kubernetes kubectl',
+          'Git commands',
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Developer command cheatsheets',
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: commands.map((command, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: `${command.category}: ${command.title}`,
+            })),
+          },
+        }}
+      />
       <PageIntro
         index="04"
         eyebrow="THE TOOLBOX"

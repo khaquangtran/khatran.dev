@@ -4,8 +4,9 @@ import { articles } from '../data/articles.js'
 import { Art } from '../components/Art.jsx'
 import { PageIntro } from '../components/PageIntro.jsx'
 import { ArticleMarkdown, getMarkdownHeadings } from '../components/ArticleMarkdown.jsx'
-import { getArticleMarkdown } from '../data/articleContent.js'
 import { ArticleToc } from '../components/ArticleToc.jsx'
+import { getArticleDocument } from '../data/articleContent.js'
+import { Seo } from '../components/Seo.jsx'
 
 export function ArticlePage() {
   const { id } = useParams()
@@ -15,6 +16,11 @@ export function ArticlePage() {
   if (!article)
     return (
       <main className="content-page">
+        <Seo
+          title="Page not found"
+          description="This page could not be found."
+          robots="noindex,follow"
+        />
         <PageIntro
           index="404"
           eyebrow="NOT FOUND"
@@ -28,13 +34,41 @@ export function ArticlePage() {
     )
 
   const isShopify = article.id === 'shopify-reservations'
-  const markdown = getArticleMarkdown(article.content)
+  const document = getArticleDocument(article.content)
+  const articleDetails = { ...article, ...document.metadata }
+  const markdown = document.content
   const headings = getMarkdownHeadings(markdown)
   const articleNumber = String(articleIndex + 1).padStart(2, '0')
   const nextArticle = articles[(articleIndex + 1) % articles.length]
+  const publishedDate = articleDetails.date ? new Date(`${articleDetails.date}T12:00:00Z`) : null
+  const formattedDate =
+    publishedDate && !Number.isNaN(publishedDate.valueOf())
+      ? new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' }).format(
+          publishedDate,
+        )
+      : articleDetails.date
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: articleDetails.title,
+    description: articleDetails.desc,
+    datePublished: articleDetails.date,
+    author: { '@type': 'Person', name: articleDetails.author || 'Kha Trần' },
+    publisher: { '@type': 'Person', name: articleDetails.author || 'Kha Trần' },
+    articleSection: articleDetails.category,
+    keywords: articleDetails.keywords,
+    inLanguage: 'en',
+  }
 
   return (
     <main className="article-page article-page-v2">
+      <Seo
+        title={articleDetails.title}
+        description={articleDetails.desc}
+        type="article"
+        keywords={articleDetails.keywords}
+        schema={articleSchema}
+      />
       <div className="article-detail article-redesign">
         <div className="article-topbar">
           <Link to="/articles" className="back-link">
@@ -47,19 +81,19 @@ export function ArticlePage() {
           <div className="article-heading">
             <div className="eyebrow article-category">
               <i className={`dot ${article.accent}`} />
-              {article.category}
+              {articleDetails.category}
             </div>
-            <h1>{article.title}</h1>
-            <p className="article-dek">{article.desc}</p>
+            <h1>{articleDetails.title}</h1>
+            <p className="article-dek">{articleDetails.desc}</p>
           </div>
           <aside className="article-meta-panel" aria-label="Article details">
             <div>
               <span>PUBLISHED</span>
-              <b>{article.date}</b>
+              <b>{formattedDate}</b>
             </div>
             <div>
               <span>READING TIME</span>
-              <b>{article.read}</b>
+              <b>{articleDetails.read}</b>
             </div>
             <div>
               <span>FIELD NOTE</span>
@@ -101,7 +135,7 @@ export function ArticlePage() {
             ) : (
               <div className="article-topic-rail">
                 <span className="eyebrow mono">SUBJECT</span>
-                <b>{article.category}</b>
+                <b>{articleDetails.category}</b>
                 <p>Part of the engineering field notes.</p>
                 <Link to="/articles">
                   Browse all notes <ArrowRight size={13} />

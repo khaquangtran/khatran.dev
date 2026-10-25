@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { articles, topics } from '../data/articles.js'
 import { ArticleRow } from '../components/ArticleCards.jsx'
 import { PageIntro } from '../components/PageIntro.jsx'
+import { Seo } from '../components/Seo.jsx'
 
 export function ArticlesPage() {
   const [topic, setTopic] = useState('All')
@@ -13,6 +14,30 @@ export function ArticlesPage() {
       : articles.filter((article) => article.category.toLowerCase().includes(topic.toLowerCase()))
   return (
     <main className="content-page">
+      <Seo
+        title="Articles on databases and distributed systems"
+        description="Browse practical engineering articles on databases, distributed systems, infrastructure, and building reliable software."
+        keywords={[
+          'engineering articles',
+          'database articles',
+          'distributed systems',
+          'software infrastructure',
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Engineering articles',
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: articles.map((article, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: article.title,
+              url: `/article/${article.id}`,
+            })),
+          },
+        }}
+      />
       <PageIntro
         index="01"
         eyebrow="THE JOURNAL"

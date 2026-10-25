@@ -1,3 +1,13 @@
+---
+title: 'Building a local ML platform with Airflow, MLflow and Kubernetes'
+description: 'A practical guide to a reproducible machine learning platform, from Airflow training pipelines and MLflow tracking to Kubernetes model serving.'
+date: '2026-09-18'
+category: 'ML infrastructure'
+read: '16 min read'
+author: 'Kha Trần'
+keywords: [machine learning, Airflow, MLflow, Kubernetes, MLOps]
+---
+
 A useful ML platform makes experiments repeatable and gives teams a clear path from training to serving. Starting locally can keep the first feedback loop quick and inexpensive.
 
 Airflow can coordinate pipeline steps, MLflow can record experiments and artifacts, and Kubernetes can provide a consistent target for workloads. The important work is defining how data, code, and configuration move between those pieces.

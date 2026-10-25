@@ -1,3 +1,13 @@
+---
+title: 'Why distributed systems are hard (and worth it)'
+description: 'A clear look at consistency, failure, retries, and the engineering trade-offs that make distributed systems difficult and useful.'
+date: '2026-09-10'
+category: 'Distributed systems'
+read: '14 min read'
+author: 'Kha Trần'
+keywords: [distributed systems, consistency, fault tolerance, retries, reliability]
+---
+
 Distributed systems make time and failure visible. A request can be delayed, duplicated, or lost while every individual component looks healthy.
 
 The most effective designs make uncertainty explicit. Define ownership, set deadlines, make retries safe, and give operators a clear view of the system’s actual state.

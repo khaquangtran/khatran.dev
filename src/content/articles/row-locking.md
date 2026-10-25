@@ -1,3 +1,13 @@
+---
+title: 'PostgreSQL row locking, explained'
+description: 'A practical guide to PostgreSQL row locks, lock waits, deadlocks, and how row-level locking compares with MySQL.'
+date: '2026-10-12'
+category: 'Databases / PostgreSQL'
+read: '9 min read'
+author: 'Kha Trần'
+keywords: [PostgreSQL, row locking, transactions, deadlocks, databases]
+---
+
 Row locks coordinate concurrent changes to the same records. They let unrelated work continue while protecting the rows a transaction needs to change.
 
 The practical cost is usually waiting. Long transactions keep locks around, and a query that touches rows in an unexpected order can create contention or a deadlock.

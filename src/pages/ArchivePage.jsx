@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { articles } from '../data/articles.js'
 import { PageIntro } from '../components/PageIntro.jsx'
+import { Seo } from '../components/Seo.jsx'
 
 export function ArchivePage() {
   const years = [...new Set(articles.map((article) => article.year))].sort((a, b) =>
@@ -9,6 +10,25 @@ export function ArchivePage() {
   )
   return (
     <main className="content-page">
+      <Seo
+        title="Article archive"
+        description="Explore the chronological archive of Kha Trần’s engineering notes on databases, distributed systems, and infrastructure."
+        keywords={['engineering article archive', 'database notes', 'systems engineering']}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Engineering notes archive',
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: articles.map((article, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: article.title,
+              url: `/article/${article.id}`,
+            })),
+          },
+        }}
+      />
       <PageIntro
         index="02"
         eyebrow="THE ARCHIVE"

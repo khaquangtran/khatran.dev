@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { articles, topics } from '../data/articles.js'
 import { ArticleRow, FeaturedArticle } from '../components/ArticleCards.jsx'
+import { Seo } from '../components/Seo.jsx'
 
 const AsciiAnimation = lazy(() =>
   import('../components/AsciiAnimation.jsx').then((module) => ({ default: module.AsciiAnimation })),
@@ -18,6 +19,19 @@ export function Home() {
           .slice(0, 4)
   return (
     <main>
+      <Seo
+        title="Engineering notes on reliable systems"
+        description="Practical field notes from Kha Trần on databases, distributed systems, and the trade-offs behind reliable software."
+        keywords={['software engineering', 'databases', 'distributed systems', 'infrastructure']}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'Kha Trần — Engineering Notes',
+          description: 'Field notes on databases, distributed systems, and reliable software.',
+          author: { '@type': 'Person', name: 'Kha Trần' },
+          inLanguage: 'en',
+        }}
+      />
       <section className="hero hero-journal hero-network">
         <div className="hero-network-topline">
           <div className="hero-kicker">

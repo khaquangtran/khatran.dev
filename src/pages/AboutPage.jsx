@@ -1,9 +1,20 @@
 import { ArrowUpRight } from 'lucide-react'
 import { PageIntro } from '../components/PageIntro.jsx'
+import { Seo } from '../components/Seo.jsx'
 
 export function AboutPage() {
   return (
     <main className="content-page about-page">
+      <Seo
+        title="About Kha Trần"
+        description="Learn about Kha Trần, a backend engineer writing practical notes on databases, distributed systems, and dependable software."
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Kha Trần',
+          mainEntity: { '@type': 'Person', name: 'Kha Trần', jobTitle: 'Backend Engineer' },
+        }}
+      />
       <PageIntro
         index="03"
         eyebrow="A LITTLE ABOUT ME"
