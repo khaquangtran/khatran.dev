@@ -1,48 +1,4 @@
-export function Art({ type = 'hero' }) {
-  if (type === 'hero')
-    return (
-      <svg viewBox="0 0 520 320" role="img" aria-label="Abstract system map">
-        <g fill="none" stroke="currentColor">
-          <path
-            d="M54 160h104m52 0h84m54 0h118M158 160V74m136 86V74m-136 86v86m136-86v86"
-            strokeDasharray="4 7"
-            opacity=".55"
-          />
-          <rect x="54" y="128" width="104" height="64" rx="2" />
-          <rect x="210" y="128" width="84" height="64" rx="2" />
-          <rect x="348" y="128" width="116" height="64" rx="2" />
-          <circle cx="158" cy="160" r="6" fill="var(--accent)" />
-          <circle cx="294" cy="160" r="6" fill="var(--violet)" />
-          <rect x="128" y="44" width="60" height="58" />
-          <rect x="264" y="44" width="60" height="58" />
-          <rect x="128" y="218" width="60" height="58" />
-          <rect x="264" y="218" width="60" height="58" />
-        </g>
-        <g fill="currentColor" fontFamily="monospace" fontSize="9">
-          <text x="75" y="164">
-            REQUEST
-          </text>
-          <text x="225" y="164">
-            SERVICE
-          </text>
-          <text x="370" y="164">
-            DATABASE
-          </text>
-          <text x="139" y="77">
-            QUEUE
-          </text>
-          <text x="274" y="77">
-            CACHE
-          </text>
-          <text x="135" y="250">
-            METRICS
-          </text>
-          <text x="274" y="250">
-            WORKERS
-          </text>
-        </g>
-      </svg>
-    )
+export function Art({ type }) {
   if (type === 'database')
     return (
       <svg viewBox="0 0 360 210" className="thumb-svg">

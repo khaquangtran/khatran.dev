@@ -6,6 +6,10 @@ category: 'System design / Databases'
 read: '9 min read'
 author: 'Kha Trần'
 keywords: [Shopify, inventory reservations, Redis, MySQL, SKIP LOCKED, database transactions]
+image: /assets/shopify-reservations/cover.svg
+darkImage: /assets/shopify-reservations/cover-dark.svg
+imageAlt: Inventory reservations moving from a Redis counter to a MySQL pool of locked unit rows
+imageCaption: From a shared quantity counter to a bounded pool of individually lockable units.
 ---
 
 A checkout reservation is a short promise: hold these units while payment finishes, then claim them if payment succeeds or release them if it does not. Shopify moved this workflow from Redis into MySQL so reservation state and the inventory ledger could share a transaction boundary.

@@ -6,6 +6,10 @@ category: 'ML infrastructure'
 read: '16 min read'
 author: 'Kha Trần'
 keywords: [machine learning, Airflow, MLflow, Kubernetes, MLOps]
+image: /assets/ml-platform/cover.svg
+darkImage: /assets/ml-platform/cover-dark.svg
+imageAlt: A machine learning workflow from Airflow orchestration through MLflow tracking to Kubernetes serving
+imageCaption: A reproducible path from pipeline run to deployed model.
 ---
 
 A useful ML platform makes experiments repeatable and gives teams a clear path from training to serving. Starting locally can keep the first feedback loop quick and inexpensive.

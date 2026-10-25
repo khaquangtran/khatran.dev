@@ -6,6 +6,10 @@ category: 'System design'
 read: '11 min read'
 author: 'Kha Trần'
 keywords: [MySQL, InnoDB, indexes, clustered index, database performance]
+image: /assets/innodb-indexes/cover.svg
+darkImage: /assets/innodb-indexes/cover-dark.svg
+imageAlt: InnoDB primary-key index tree branching into leaf pages and rows
+imageCaption: The primary key organizes the clustered index; secondary indexes point back to it.
 ---
 
 InnoDB’s primary key is more than a lookup path: it defines how rows are organized in the clustered index. Secondary indexes store their own key and a reference back to that primary key.

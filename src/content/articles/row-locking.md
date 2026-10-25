@@ -6,6 +6,10 @@ category: 'Databases / PostgreSQL'
 read: '9 min read'
 author: 'Kha Trần'
 keywords: [PostgreSQL, row locking, transactions, deadlocks, databases]
+image: /assets/row-locking/cover.svg
+darkImage: /assets/row-locking/cover-dark.svg
+imageAlt: Two database transactions contending for different rows, with one waiting on a lock
+imageCaption: Row locks protect the records a transaction needs while unrelated work continues.
 ---
 
 Row locks coordinate concurrent changes to the same records. They let unrelated work continue while protecting the rows a transaction needs to change.

@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { articles } from '../data/articles.js'
-import { Art } from '../components/Art.jsx'
+import { ArticleImage } from '../components/ArticleBlocks.jsx'
 import { PageIntro } from '../components/PageIntro.jsx'
 import { ArticleMarkdown, getMarkdownHeadings } from '../components/ArticleMarkdown.jsx'
 import { ArticleToc } from '../components/ArticleToc.jsx'
@@ -67,6 +67,7 @@ export function ArticlePage() {
         description={articleDetails.desc}
         type="article"
         keywords={articleDetails.keywords}
+        image={articleDetails.image}
         schema={articleSchema}
       />
       <div className="article-detail article-redesign">
@@ -121,12 +122,15 @@ export function ArticlePage() {
           </div>
         )}
 
-        <figure className={`detail-art ${article.art}`}>
-          <Art type={article.art} />
-          <figcaption>
-            {isShopify ? 'INVENTORY RESERVATIONS / SYSTEM MAP' : `FIELD NOTE / ${article.year}`}
-          </figcaption>
-        </figure>
+        {articleDetails.image && (
+          <ArticleImage
+            className={`detail-art article-cover ${article.art}`}
+            src={articleDetails.image}
+            darkSrc={articleDetails.darkImage}
+            alt={articleDetails.imageAlt}
+            caption={articleDetails.imageCaption}
+          />
+        )}
 
         <div className={`article-reading ${isShopify ? 'shopify-reading' : ''}`}>
           <aside className="article-side-rail">

@@ -6,6 +6,10 @@ category: 'Distributed systems'
 read: '14 min read'
 author: 'Kha Trần'
 keywords: [distributed systems, consistency, fault tolerance, retries, reliability]
+image: /assets/distributed-systems/cover.svg
+darkImage: /assets/distributed-systems/cover-dark.svg
+imageAlt: A distributed network of nodes with a delayed connection between peers
+imageCaption: A distributed system must account for delays and partial failures between healthy nodes.
 ---
 
 Distributed systems make time and failure visible. A request can be delayed, duplicated, or lost while every individual component looks healthy.

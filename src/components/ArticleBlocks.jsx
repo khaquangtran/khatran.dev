@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { CopyCommand } from './CopyCommand.jsx'
 
 export function CodeBlock({ code, language = 'TEXT', label = 'CODE' }) {
@@ -17,10 +18,24 @@ export function CodeBlock({ code, language = 'TEXT', label = 'CODE' }) {
   )
 }
 
-export function ArticleImage({ src, alt = '', caption }) {
+export function ArticleImage({ src, darkSrc, alt = '', caption, className = '' }) {
+  const [darkMode, setDarkMode] = useState(
+    () => typeof document !== 'undefined' && document.documentElement.dataset.theme === 'dark',
+  )
+
+  useEffect(() => {
+    if (!darkSrc) return undefined
+    const root = document.documentElement
+    const updateTheme = () => setDarkMode(root.dataset.theme === 'dark')
+    const observer = new MutationObserver(updateTheme)
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] })
+    updateTheme()
+    return () => observer.disconnect()
+  }, [darkSrc])
+
   return (
-    <figure className="article-image">
-      <img src={src} alt={alt} loading="lazy" />
+    <figure className={`article-image ${className}`.trim()}>
+      <img src={darkMode && darkSrc ? darkSrc : src} alt={alt} loading="lazy" />
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
   )
