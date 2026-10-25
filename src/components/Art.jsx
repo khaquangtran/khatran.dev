@@ -1,5 +1,3 @@
-import React from 'react'
-
 export function Art({ type = 'hero' }) {
   if (type === 'hero')
     return (

@@ -8,6 +8,7 @@ import { ArchivePage } from '../pages/ArchivePage.jsx'
 import { AboutPage } from '../pages/AboutPage.jsx'
 import { CheatsheetsPage } from '../pages/CheatsheetsPage.jsx'
 import { ArticlePage } from '../pages/ArticlePage.jsx'
+import { NotFoundPage } from '../pages/NotFoundPage.jsx'
 import '../styles/global.css'
 
 export function App() {
@@ -26,7 +27,7 @@ export function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cheatsheets" element={<CheatsheetsPage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>

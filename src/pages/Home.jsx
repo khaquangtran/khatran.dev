@@ -22,7 +22,7 @@ export function Home() {
         <div className="hero-network-topline">
           <div className="hero-kicker">
             <span className="kicker-line" />
-            KHA.TRN / ENGINEERING JOURNAL
+            KHA.TRAN / ENGINEERING JOURNAL
           </div>
           <span className="hero-edition">INDEPENDENT · VOL. 01</span>
         </div>
