@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" fill="none">
+  <g stroke="#1e302f" stroke-width="2">
+    <path d="M370 92h130M370 150h130M370 208h130M700 92h130M700 150h130M700 208h130" stroke="#aab8b2" />
+    <rect x="500" y="66" width="200" height="168" rx="3" />
+    <path d="M500 102c0 16 45 29 100 29s100-13 100-29M500 150c0 16 45 29 100 29s100-13 100-29M500 198c0 16 45 29 100 29s100-13 100-29" />
+    <circle cx="370" cy="92" r="5" fill="#ad442d" stroke="none" />
+    <circle cx="370" cy="150" r="5" fill="#ad442d" stroke="none" />
+    <circle cx="370" cy="208" r="5" fill="#ad442d" stroke="none" />
+    <circle cx="830" cy="92" r="5" fill="#ad442d" stroke="none" />
+    <circle cx="830" cy="150" r="5" fill="#ad442d" stroke="none" />
+    <circle cx="830" cy="208" r="5" fill="#ad442d" stroke="none" />
+  </g>
+  <g fill="#5e7472" font-family="monospace" font-size="13" letter-spacing="1.5">
+    <text x="270" y="97" text-anchor="end">SQL</text>
+    <text x="270" y="155" text-anchor="end">SEARCH</text>
+    <text x="270" y="213" text-anchor="end">JSON</text>
+    <text x="930" y="97">GEO</text>
+    <text x="930" y="155">TIME SERIES</text>
+    <text x="930" y="213">VECTORS</text>
+  </g>
+  <text x="600" y="158" text-anchor="middle" fill="#1e302f" font-family="monospace" font-size="18" letter-spacing="2">POSTGRES</text>
+</svg>
